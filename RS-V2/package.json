@@ -1,5 +1,5 @@
 {
-  "name": "Red Social V2",
+  "name": "RedSocialV2",
   "version": "0.0.1",
   "dependencies": {
     "body-parser": "^1.18.2",
