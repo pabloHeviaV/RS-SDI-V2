@@ -47,6 +47,8 @@ app.get('/', function (req, res) {
     res.redirect('/identificarse');
 })
 
+
+
 app.use(function (err, req, res, next) {
     console.log("Error producido: " + err); //we log the error in our db
     if (!res.headersSent) {

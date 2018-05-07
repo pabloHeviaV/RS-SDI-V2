@@ -1,5 +1,10 @@
 module.exports = function (app, swig, gestorBD) {
 
+    app.get("/borrarDB", function (req, res){
+       gestorBD.clearDB() ;
+       res.redirect("/");
+    });
+
     app.get("/registrarse", function (req, res) {
         var respuesta = swig.renderFile('views/bregistro.html', {});
         res.send(respuesta);

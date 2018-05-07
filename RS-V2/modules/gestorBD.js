@@ -62,4 +62,16 @@ module.exports = {
             }
         });
     },
+    //TODO: añadir el resto de colecciones que se vayan creando aquí
+    clearDB: function () {
+        this.mongo.MongoClient.connect(this.app.get('db'), function (err, db) {
+            if (!err) {
+                db.dropCollection("usuarios", function (err, delOK) {
+                    if (err) throw err;
+                    if (delOK) console.log("Collection usuarios borrada");
+                    db.close();
+                });
+            }
+        });
+    }
 };
