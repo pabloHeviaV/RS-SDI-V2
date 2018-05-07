@@ -5,12 +5,16 @@ var app = express();
 var expressSession = require('express-session');
 app.use(expressSession({secret: 'abcdefg', resave: true, saveUninitialized: true}));
 var crypto = require('crypto');
+var mongo = require('mongodb');
 
 var swig = require('swig');
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+var gestorBD = require("./modules/gestorBD.js");
+gestorBD.init(app, mongo);
 
 // routerUsuarioSession
 var routerUsuarioSession = express.Router();
@@ -37,7 +41,7 @@ app.set('clave', 'abcdefg');
 app.set('crypto', crypto);
 
 //Rutas/controladores por lógica
-//TODO
+require("./routes/rusuarios.js")(app, swig, gestorBD);
 
 app.get('/', function (req, res) {
     res.redirect('/login');
