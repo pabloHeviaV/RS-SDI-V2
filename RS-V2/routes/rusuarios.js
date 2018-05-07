@@ -72,10 +72,10 @@ module.exports = function (app, swig, gestorBD) {
     app.get("/user/list", function(req, res) {
         var criterio = {};
         if (req.query.busqueda != null) {
-            criterio = {"nombre": {$regex: ".*" + req.query.busqueda + ".*"}};
+            criterio = {"email": {$regex: ".*" + req.query.busqueda + ".*"}};
         }
-        var pg = parseInt(req.query.pg); // Es String !!!
-        if (req.query.pg == null) { // Puede no venir el param
+        var pg = parseInt(req.query.pg);
+        if (req.query.pg == null) {
             pg = 1;
         }
 
