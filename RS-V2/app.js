@@ -44,7 +44,7 @@ app.set('crypto', crypto);
 require("./routes/rusuarios.js")(app, swig, gestorBD);
 
 app.get('/', function (req, res) {
-    res.redirect('/login');
+    res.redirect('/identificarse');
 })
 
 app.use(function (err, req, res, next) {
