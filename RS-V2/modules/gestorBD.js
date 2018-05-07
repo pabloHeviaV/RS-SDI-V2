@@ -67,8 +67,18 @@ module.exports = {
         this.mongo.MongoClient.connect(this.app.get('db'), function (err, db) {
             if (!err) {
                 db.dropCollection("usuarios", function (err, delOK) {
-                    if (err) throw err;
+                    if (err) console.log("Se ha producido un error al borrar la collection usuarios");
                     if (delOK) console.log("Collection usuarios borrada");
+                    db.close();
+                });
+            }
+        });
+        this.mongo.MongoClient.connect(this.app.get('db'), function (err, db) {
+            if (!err) {
+
+                db.createCollection("usuarios", function (err, delOK) {
+                    if (err) console.log("Se ha producido un error al crear la collection usuarios");
+                    if (delOK) console.log("Collection usuarios creada");
                     db.close();
                 });
             }

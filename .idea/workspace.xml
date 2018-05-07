@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f345a26f-cb6a-43f8-87f6-e391bc4358a7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RS-V2/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/RS-V2/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RS-V2/modules/gestorBD.js" beforeDir="false" afterPath="$PROJECT_DIR$/RS-V2/modules/gestorBD.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RS-V2/routes/rusuarios.js" beforeDir="false" afterPath="$PROJECT_DIR$/RS-V2/routes/rusuarios.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -37,16 +34,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gestorBD.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/RS-V2/modules/gestorBD.js">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RS-V2/views/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="64" column="68" selection-start-line="64" selection-start-column="68" selection-end-line="64" selection-end-column="68" />
+            <state relative-caret-position="136">
+              <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="buserslist.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="gestorBD.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RS-V2/modules/gestorBD.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="69" column="76" selection-start-line="69" selection-start-column="76" selection-end-line="69" selection-end-column="76" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="buserslist.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RS-V2/views/buserslist.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
@@ -58,8 +64,8 @@
       <file leaf-file-name="bidentificacion.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RS-V2/views/bidentificacion.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="54" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="54" />
+            <state relative-caret-position="170">
+              <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -104,10 +110,10 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/RS-V2/node_modules" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="2343" />
-    <option name="y" value="65" />
-    <option name="width" value="1040" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="2179" />
+    <option name="y" value="25" />
+    <option name="width" value="1064" />
     <option name="height" value="1087" />
   </component>
   <component name="ProjectView">
@@ -200,7 +206,7 @@
       <updated>1524731204761</updated>
       <workItem from="1524731207008" duration="1262000" />
       <workItem from="1525364976666" duration="2063000" />
-      <workItem from="1525694263561" duration="13010000" />
+      <workItem from="1525694263561" duration="15046000" />
     </task>
     <task id="LOCAL-00001" summary="Registro completo">
       <created>1525704012287</created>
@@ -234,18 +240,18 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16335000" />
+    <option name="totallyTimeSpent" value="18371000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="2179" y="25" width="1064" height="1087" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1125" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20610687" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31205675" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.36503068" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -327,31 +333,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RS-V2/views/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-833">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RS-V2/views/bidentificacion.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="54" selection-start-line="8" selection-start-column="49" selection-end-line="8" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RS-V2/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="49" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RS-V2/views/buserslist.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="33" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -364,8 +349,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RS-V2/modules/gestorBD.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="64" column="68" selection-start-line="64" selection-start-column="68" selection-end-line="64" selection-end-column="68" />
+        <state relative-caret-position="188">
+          <caret line="69" column="76" selection-start-line="69" selection-start-column="76" selection-end-line="69" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RS-V2/views/bidentificacion.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RS-V2/views/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RS-V2/views/buserslist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="33" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="33" />
         </state>
       </provider>
     </entry>
