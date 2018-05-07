@@ -54,7 +54,7 @@ module.exports = function (app, swig, gestorBD) {
             } else {
                 req.session.usuario = usuarios[0].email;
                 console.log("Login: usuario con email = "+ req.session.usuario + " identificado");
-                res.redirect("/publicaciones");
+                res.redirect("/user/list");
             }
         });
     });
@@ -67,6 +67,35 @@ module.exports = function (app, swig, gestorBD) {
         }
         var respuesta = swig.renderFile('views/bidentificacion.html', {});
         res.send(respuesta);
+    });
+
+    app.get("/user/list", function(req, res) {
+        var criterio = {};
+        if (req.query.busqueda != null) {
+            criterio = {"nombre": {$regex: ".*" + req.query.busqueda + ".*"}};
+        }
+        var pg = parseInt(req.query.pg); // Es String !!!
+        if (req.query.pg == null) { // Puede no venir el param
+            pg = 1;
+        }
+
+        gestorBD.obtenerUsuariosPg(criterio, pg, function (usuarios, total) {
+            if (usuarios == null) {
+                res.send("Error al listar ");
+            } else {
+                var pgUltima = total / 4;
+                if (total % 4 > 0) { // Sobran decimales
+                    pgUltima = pgUltima + 1;
+                }
+                var respuesta = swig.renderFile('views/buserslist.html',
+                    {
+                        usuarios: usuarios,
+                        pgActual: pg,
+                        pgUltima: pgUltima
+                    });
+                res.send(respuesta);
+            }
+        });
     });
 
 };

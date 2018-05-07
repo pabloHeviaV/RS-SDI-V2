@@ -25,12 +25,12 @@ routerUsuarioSession.use(function (req, res, next) {
         next();
     } else {
         console.log("va a : " + req.session.destino);
-        res.redirect("/login");
+        res.redirect("/identificarse");
     }
 });
 
 //Aplicar routerUsuarioSession
-//TODO poner urls privadas
+app.use("/user/list", routerUsuarioSession);
 
 app.use(express.static('public'));
 

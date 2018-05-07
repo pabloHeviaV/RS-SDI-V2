@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f345a26f-cb6a-43f8-87f6-e391bc4358a7" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/RS-V2/views/bidentificacion.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RS-V2/views/buserslist.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RS-V2/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/RS-V2/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RS-V2/modules/gestorBD.js" beforeDir="false" afterPath="$PROJECT_DIR$/RS-V2/modules/gestorBD.js" afterDir="false" />
@@ -23,8 +23,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RS-V2/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="50" column="72" lean-forward="true" selection-start-line="50" selection-start-column="72" selection-end-line="50" selection-end-column="72" />
+            <state relative-caret-position="459">
+              <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -32,8 +32,8 @@
       <file leaf-file-name="rusuarios.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RS-V2/routes/rusuarios.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="68" column="28" lean-forward="true" selection-start-line="68" selection-start-column="28" selection-end-line="68" selection-end-column="28" />
+            <state relative-caret-position="407">
+              <caret line="85" column="41" lean-forward="true" selection-start-line="85" selection-start-column="41" selection-end-line="85" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -46,26 +46,17 @@
       <file leaf-file-name="gestorBD.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RS-V2/modules/gestorBD.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
+            <state relative-caret-position="509">
+              <caret line="58" column="39" lean-forward="true" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/RS-V2/views/base.html">
+      <file leaf-file-name="buserslist.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/RS-V2/views/buserslist.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="62" column="43" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bregistro.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RS-V2/views/bregistro.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="47" column="7" lean-forward="true" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
+            <state relative-caret-position="510">
+              <caret line="62" column="53" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -76,6 +67,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -93,9 +85,10 @@
         <option value="$PROJECT_DIR$/RS-V2/package.json" />
         <option value="$PROJECT_DIR$/RS-V2/views/bregistro.html" />
         <option value="$PROJECT_DIR$/RS-V2/views/base.html" />
-        <option value="$PROJECT_DIR$/RS-V2/app.js" />
         <option value="$PROJECT_DIR$/RS-V2/modules/gestorBD.js" />
+        <option value="$PROJECT_DIR$/RS-V2/app.js" />
         <option value="$PROJECT_DIR$/RS-V2/routes/rusuarios.js" />
+        <option value="$PROJECT_DIR$/RS-V2/views/buserslist.html" />
       </list>
     </option>
   </component>
@@ -157,6 +150,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../TiendaMusica" />
@@ -203,7 +197,7 @@
       <updated>1524731204761</updated>
       <workItem from="1524731207008" duration="1262000" />
       <workItem from="1525364976666" duration="2063000" />
-      <workItem from="1525694263561" duration="7093000" />
+      <workItem from="1525694263561" duration="9463000" />
     </task>
     <task id="LOCAL-00001" summary="Registro completo">
       <created>1525704012287</created>
@@ -212,11 +206,18 @@
       <option name="project" value="LOCAL" />
       <updated>1525704012287</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Login y logout implementados">
+      <created>1525715686033</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1525715686033</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10418000" />
+    <option name="totallyTimeSpent" value="12788000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -249,7 +250,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Registro completo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Registro completo" />
+    <MESSAGE value="Login y logout implementados" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login y logout implementados" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -308,32 +310,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RS-V2/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="50" column="72" lean-forward="true" selection-start-line="50" selection-start-column="72" selection-end-line="50" selection-end-column="72" />
+        <state relative-caret-position="459">
+          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RS-V2/modules/gestorBD.js">
+    <entry file="file://$PROJECT_DIR$/RS-V2/routes/rusuarios.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
+        <state relative-caret-position="407">
+          <caret line="85" column="41" lean-forward="true" selection-start-line="85" selection-start-column="41" selection-end-line="85" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RS-V2/views/bidentificacion.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/RS-V2/routes/rusuarios.js">
+    <entry file="file://$PROJECT_DIR$/RS-V2/views/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="68" column="28" lean-forward="true" selection-start-line="68" selection-start-column="28" selection-end-line="68" selection-end-column="28" />
+        <state relative-caret-position="-833">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RS-V2/views/base.html">
+    <entry file="file://$PROJECT_DIR$/RS-V2/modules/gestorBD.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="62" column="43" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="43" />
+        <state relative-caret-position="509">
+          <caret line="58" column="39" lean-forward="true" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RS-V2/views/buserslist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="62" column="53" selection-start-line="62" selection-start-column="53" selection-end-line="62" selection-end-column="53" />
         </state>
       </provider>
     </entry>
