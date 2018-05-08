@@ -122,15 +122,15 @@ public class RSTests {
 		driver.navigate().to("http://localhost:8081/user/list");
 		PO_LoginView.checkKey(driver, "Identificación de usuario");
 	}
-/*
+
 	// 4.1 [BusUsrVal] Realizar una búsqueda válida en el listado de
 	// usuarios desde un usuario en sesión.
 	@Test
 	public void PR4_1() {
 		PO_HomeView.clickOption(driver, "identificarse", "class", "btn btn-primary");
 		PO_LoginView.fillForm(driver, "7@uniovi.es", "123456");
-		PO_UserListView.search(driver, "marta");
-		PO_View.checkElement(driver, "text", "Marta");
+		PO_UserListView.search(driver, "Pablo");
+		PO_View.checkElement(driver, "text", "Pablo");
 	}
 
 	// 4.2 [BusUsrInVal] Intento de acceso con URL a la búsqueda de usuarios desde
@@ -139,11 +139,11 @@ public class RSTests {
 	@Test
 	public void PR4_2() {
 		// Intentamos acceder a una url privada sin identificarnos
-		driver.navigate().to("http://localhost:8081/user/list?busqueda=marta");
+		driver.navigate().to("http://localhost:8081/user/list?busqueda=Pablo");
 		// Nos devuelve a la página de login
 		PO_LoginView.checkKey(driver, "Identificación de usuario");
 	}
-
+/*
 	// 5.1 [InvVal] Enviar una invitación de amistad a un usuario de forma valida.
 	@Test
 	public void PR5_1() {

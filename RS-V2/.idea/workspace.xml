@@ -14,11 +14,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="548">
               <caret line="62" column="2" lean-forward="true" selection-start-line="62" selection-start-column="2" selection-end-line="62" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rusuarios.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/rusuarios.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="581">
+              <caret line="84" column="9" lean-forward="true" selection-start-line="84" selection-start-column="9" selection-end-line="84" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="buserslist.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/buserslist.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="28" column="33" lean-forward="true" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -38,8 +56,8 @@
       <list>
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/routes/rusuarios.js" />
         <option value="$PROJECT_DIR$/views/base.html" />
+        <option value="$PROJECT_DIR$/routes/rusuarios.js" />
       </list>
     </option>
   </component>
@@ -57,10 +75,11 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="949" />
-    <option name="width" value="980" />
-    <option name="height" value="1031" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="69" />
+    <option name="y" value="19" />
+    <option name="width" value="1710" />
+    <option name="height" value="1032" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -95,7 +114,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SDI/NodeJS/TiendaMusica" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -135,22 +154,23 @@
       <option name="presentableId" value="Default" />
       <updated>1524124870043</updated>
       <workItem from="1524124872091" duration="2449000" />
-      <workItem from="1525780879402" duration="2689000" />
+      <workItem from="1525780879402" duration="4316000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5138000" />
+    <option name="totallyTimeSpent" value="6765000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2334114" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15456675" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.5102041" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.12755102" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -198,13 +218,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/rusuarios.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="99" column="37" selection-start-line="99" selection-start-column="37" selection-end-line="99" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -215,10 +228,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/buserslist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="28" column="33" lean-forward="true" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="548">
           <caret line="62" column="2" lean-forward="true" selection-start-line="62" selection-start-column="2" selection-end-line="62" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/rusuarios.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="581">
+          <caret line="84" column="9" lean-forward="true" selection-start-line="84" selection-start-column="9" selection-end-line="84" selection-end-column="9" />
         </state>
       </provider>
     </entry>

@@ -77,7 +77,11 @@ module.exports = function (app, swig, gestorBD) {
     app.get("/user/list", function(req, res) {
         var criterio = {};
         if (req.query.busqueda != null) {
-            criterio = {"email": {$regex: ".*" + req.query.busqueda + ".*"}};
+            //criterio = {"email": {$regex: ".*" + req.query.busqueda + ".*"}};
+            criterio = {
+                '$or': [{"name": {$regex: ".*" + req.query.busqueda + ".*"}
+                }, {"email": {$regex: ".*" + req.query.busqueda + ".*"}}]
+            };
         }
         var pg = parseInt(req.query.pg);
         if (req.query.pg == null) {
