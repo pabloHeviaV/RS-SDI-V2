@@ -24,51 +24,57 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a href="/">Inicio</a></li>
+                {% if sesionUsuario %}
+                <!-- <li><a href="/">Inicio</a></li> -->
 
-                <li id="users-menu" class="dropdown">
-                    <a
-                            class="dropdown-toggle" data-toggle="dropdown" href="#">Gestión de Usuarios
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/user/list">Ver Usuarios</a></li>
-                    </ul>
-                </li>
+                 <li id="users-menu" class="dropdown">
+                     <a
+                             class="dropdown-toggle" data-toggle="dropdown" href="#">Gestión de Usuarios
+                         <span class="caret"></span>
+                     </a>
+                     <ul class="dropdown-menu">
+                         <li><a href="/user/list">Ver Usuarios</a></li>
+                     </ul>
+                 </li>
 
-                <li id="fr-menu" class="dropdown">
+                 <li id="fr-menu" class="dropdown">
 
-                    <a
-                            class="dropdown-toggle" data-toggle="dropdown" href="#">Solicitudes de Amistad
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/friendRequest/list">Ver solicitudes</a></li>
-                    </ul>
-                </li>
+                     <a
+                             class="dropdown-toggle" data-toggle="dropdown" href="#">Solicitudes de Amistad
+                         <span class="caret"></span>
+                     </a>
+                     <ul class="dropdown-menu">
+                         <li><a href="/friendRequest/list">Ver solicitudes</a></li>
+                     </ul>
+                 </li>
 
-                <li id="friends-menu" class="dropdown">
-                    <a
-                            class="dropdown-toggle" data-toggle="dropdown" href="#">Amigos
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/user/listFriends">Ver amigos</a></li>
-                    </ul>
-                </li>
-            </ul>
+                 <li id="friends-menu" class="dropdown">
+                     <a
+                             class="dropdown-toggle" data-toggle="dropdown" href="#">Amigos
+                         <span class="caret"></span>
+                     </a>
+                     <ul class="dropdown-menu">
+                         <li><a href="/user/listFriends">Ver amigos</a></li>
+                     </ul>
+                 </li>
+                 {% endif %}
+             </ul>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/registrarse"><span class="glyphicon glyphicon-user"></span> Registrate</a></li>
-                <li><a href="/identificarse"><span class="glyphicon glyphicon-log-in"></span> Identifícate</a></li>
-                <li><a href="/desconectarse"><span class="glyphicon glyphicon-log-out"></span> Desconéctate</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+             <ul class="nav navbar-nav navbar-right">
+                 {% if !sesionUsuario %}
+                 <li><a href="/registrarse"><span class="glyphicon glyphicon-user"></span> Registrate</a></li>
+                 <li><a href="/identificarse"><span class="glyphicon glyphicon-log-in"></span> Identifícate</a></li>
+                 {% endif %}
+                 {% if sesionUsuario %}
+                 <li><a href="/desconectarse"><span class="glyphicon glyphicon-log-out"></span> Desconéctate</a></li>
+                 {% endif %}
+             </ul>
+         </div>
+     </div>
+ </nav>
 
-<div class="container">
-    <!-- Contenido -->
+ <div class="container">
+     <!-- Contenido -->
 
 
     <script>

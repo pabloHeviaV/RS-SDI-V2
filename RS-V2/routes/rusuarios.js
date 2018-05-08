@@ -96,7 +96,8 @@ module.exports = function (app, swig, gestorBD) {
                     {
                         usuarios: usuarios,
                         pgActual: pg,
-                        pgUltima: pgUltima
+                        pgUltima: pgUltima,
+                        sesionUsuario: req.session.usuario != null
                     });
                 res.send(respuesta);
             }
