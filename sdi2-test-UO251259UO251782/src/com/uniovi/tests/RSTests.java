@@ -55,8 +55,8 @@ public class RSTests {
 
 	// En Windows (Debe ser la versi�n 46.0 y desactivar las actualizacioens
 	// autom�ticas)):
-	static String PathFirefox = "C:\\Users\\yo\\Desktop\\SDI\\entorno-sdi\\entorno-sdi\\firefox\\FirefoxPortable.exe";
-	// "C:\\Users\\Usuario\\Desktop\\Firefox46.win\\FirefoxPortable.exe";
+	//static String PathFirefox = "C:\\Users\\yo\\Desktop\\SDI\\entorno-sdi\\entorno-sdi\\firefox\\FirefoxPortable.exe";
+	static String PathFirefox = "C:\\Firefox46.win\\FirefoxPortable.exe";
 	static WebDriver driver = getDriver(PathFirefox);
 	static String URL = "http://localhost:8081";
 
@@ -72,7 +72,7 @@ public class RSTests {
 	public void PR1_1() {
 		PO_HomeView.clickOption(driver, "registrarse", "class", "btn btn-primary");
 		PO_RegisterView.fillForm(driver, "7@uniovi.es", "Pablo", "Menendez", "123456", "123456");
-		PO_LoginView.checkKey(driver, "Usuarios");
+		PO_LoginView.checkKey(driver, "Identificación de usuario");
 	}
 
 	// 1.2 [RegInval] Registro de Usuario con datos inválidos (repetición de
@@ -129,8 +129,8 @@ public class RSTests {
 	public void PR4_1() {
 		PO_HomeView.clickOption(driver, "identificarse", "class", "btn btn-primary");
 		PO_LoginView.fillForm(driver, "7@uniovi.es", "123456");
-		PO_UserListView.search(driver, "marta");
-		PO_View.checkElement(driver, "text", "Marta");
+		PO_UserListView.search(driver, "Pablo");
+		PO_View.checkElement(driver, "text", "Pablo");
 	}
 
 	// 4.2 [BusUsrInVal] Intento de acceso con URL a la búsqueda de usuarios desde
@@ -139,7 +139,7 @@ public class RSTests {
 	@Test
 	public void PR4_2() {
 		// Intentamos acceder a una url privada sin identificarnos
-		driver.navigate().to("http://localhost:8081/user/list?busqueda=marta");
+		driver.navigate().to("http://localhost:8081/user/list?busqueda=Pablo");
 		// Nos devuelve a la página de login
 		PO_LoginView.checkKey(driver, "Identificación de usuario");
 	}

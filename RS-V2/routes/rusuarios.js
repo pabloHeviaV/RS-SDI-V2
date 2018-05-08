@@ -77,7 +77,11 @@ module.exports = function (app, swig, gestorBD) {
     app.get("/user/list", function(req, res) {
         var criterio = {};
         if (req.query.busqueda != null) {
-            criterio = {"email": {$regex: ".*" + req.query.busqueda + ".*"}};
+            //criterio = {"email": {$regex: ".*" + req.query.busqueda + ".*"}};
+            criterio = {
+                '$or': [{"name": {$regex: ".*" + req.query.busqueda + ".*"}
+                }, {"email": {$regex: ".*" + req.query.busqueda + ".*"}}]
+            };
         }
         var pg = parseInt(req.query.pg);
         if (req.query.pg == null) {
@@ -88,8 +92,8 @@ module.exports = function (app, swig, gestorBD) {
             if (usuarios == null) {
                 res.send("Error al listar ");
             } else {
-                var pgUltima = total / 4;
-                if (total % 4 > 0) { // Sobran decimales
+                var pgUltima = total / 5;
+                if (total % 5 > 0) { // Sobran decimales
                     pgUltima = pgUltima + 1;
                 }
                 var respuesta = swig.renderFile('views/buserslist.html',
