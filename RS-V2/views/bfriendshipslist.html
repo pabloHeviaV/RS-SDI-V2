@@ -3,8 +3,8 @@
 {% block contenido_principal %}
 
 <div class="container">
-    <h2>Solicitudes de amistad</h2>
-    <p>Las solicitudes de amistad que tienes son las siguientes:</p>
+    <h2>Amigos</h2>
+    <p>Las amigos que tienes son las siguientes:</p>
     <div class="table-responsive">
         <table class="table table-hover"
                id="tableUsers">
@@ -16,13 +16,10 @@
             </tr>
             </thead>
             <tbody>
-            {%for peticion in peticiones %}
+            {%for amistad in amistades %}
             <tr>
-                <td>{{ peticion.nameSender }}</td>
-                <td>{{ peticion.emailSender }}</td>
-                <td>
-                    <a class="btn btn-primary  pull-right" href="/user/acceptFriendRequest/{{ peticion.emailSender }}" >Aceptar</a>
-                </td>
+                <td>{{ amistad.nameSender }}</td>
+                <td>{{ amistad.emailSender }}</td>
             </tr>
             {% endfor %}
             </tbody>

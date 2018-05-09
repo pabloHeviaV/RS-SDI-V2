@@ -121,6 +121,83 @@ module.exports = {
         });
     },
 
+    eliminarPeticion: function (criterio, funcionCallback) {
+        this.mongo.MongoClient.connect(this.app.get('db'), function (err, db) {
+            if (err) {
+                funcionCallback(null);
+            } else {
+                var collection = db.collection('peticiones');
+                collection.remove(criterio, function (err, result) {
+                    if (err) {
+                        funcionCallback(null);
+                    } else {
+                        funcionCallback(result);
+                    }
+                    db.close();
+                });
+            }
+        });
+    },
+
+    insertarAmistad: function(amistad, funcionCallback) {
+        this.mongo.MongoClient.connect(this.app.get('db'), function(err, db) {
+            if (err) {
+                funcionCallback(null);
+            } else {
+                var collection = db.collection('amistades');
+                collection.insert(amistad, function(err, result) {
+                    if (err) {
+                        funcionCallback(null);
+                    } else {
+                        funcionCallback(result.ops[0]._id);
+                    }
+                    db.close();
+                });
+            }
+        });
+    },
+
+    obtenerAmistades: function(criterio, funcionCallback) {
+        this.mongo.MongoClient.connect(this.app.get('db'), function(err, db) {
+            if (err) {
+                funcionCallback(null);
+            } else {
+                var collection = db.collection('amistades');
+                collection.find(criterio).toArray(function(err, amistades) {
+                    if (err) {
+                        funcionCallback(null);
+                    } else {
+                        funcionCallback(amistades);
+                    }
+                    db.close();
+                });
+            }
+
+        });
+    },
+
+    obtenerAmistadesPg: function (criterio, pg, funcionCallback) {
+        this.mongo.MongoClient.connect(this.app.get('db'), function (err, db) {
+            if (err) {
+                funcionCallback(null);
+            } else {
+                var collection = db.collection('amistades');
+                collection.count(function (err, count) {
+                    collection.find(criterio).skip((pg - 1) * 5).limit(5)
+                        .toArray(function (err, amistades) {
+                            if (err) {
+                                funcionCallback(null);
+                            } else {
+                                funcionCallback(amistades, count);
+                            }
+                            db.close();
+                        });
+                });
+            }
+
+        });
+    },
+
     //TODO: añadir el resto de colecciones que se vayan creando aquí
     clearDB: function () {
         this.mongo.MongoClient.connect(this.app.get('db'), function (err, db) {
