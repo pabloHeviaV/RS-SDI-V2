@@ -211,5 +211,34 @@ module.exports = function (app, swig, gestorBD) {
         });
     });
 
+    app.get("/friendship/list", function (req, res) {
+        var criterio = {
+            emailReceiver: req.session.usuario.email
+        };
+
+        var pg = parseInt(req.query.pg);
+        if (req.query.pg == null) {
+            pg = 1;
+        }
+
+        gestorBD.obtenerAmistadesPg(criterio, pg, function (amistades, total) {
+            if (amistades == null) {
+                res.send("Error al listar ");
+            } else {
+                var pgUltima = total / 5;
+                if (total % 5 > 0) { // Sobran decimales
+                    pgUltima = pgUltima + 1;
+                }
+                var respuesta = swig.renderFile('views/bfriendshipslist.html',
+                    {
+                        amistades: amistades,
+                        pgActual: pg,
+                        pgUltima: pgUltima,
+                        sesionUsuario: req.session.usuario
+                    });
+                res.send(respuesta);
+            }
+        });
+    });
 
 };
