@@ -27,7 +27,12 @@
             <tr>
                 <td>{{ usuario.name }}</td>
                 <td>{{ usuario.email }}</td>
-                <td></td>
+                <td>
+
+                    {% if usuario.email != sesionUsuario.email %}
+                        <a class="btn btn-primary  pull-right" href="/user/sendFriendRequest/{{ usuario.email }}" >Agregar amigo</a>
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
             </tbody>

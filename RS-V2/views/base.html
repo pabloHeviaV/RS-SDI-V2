@@ -24,7 +24,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                {% if sesionUsuario %}
+                {% if sesionUsuario != null %}
                 <!-- <li><a href="/">Inicio</a></li> -->
 
                  <li id="users-menu" class="dropdown">
@@ -61,11 +61,11 @@
              </ul>
 
              <ul class="nav navbar-nav navbar-right">
-                 {% if !sesionUsuario %}
+                 {% if sesionUsuario == null %}
                  <li><a href="/registrarse"><span class="glyphicon glyphicon-user"></span> Registrate</a></li>
                  <li><a href="/identificarse"><span class="glyphicon glyphicon-log-in"></span> Identifícate</a></li>
                  {% endif %}
-                 {% if sesionUsuario %}
+                 {% if sesionUsuario != null %}
                  <li><a href="/desconectarse"><span class="glyphicon glyphicon-log-out"></span> Desconéctate</a></li>
                  {% endif %}
              </ul>

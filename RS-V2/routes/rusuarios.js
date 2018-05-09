@@ -57,8 +57,8 @@ module.exports = function (app, swig, gestorBD) {
                     "?mensaje=Email o password incorrecto"+
                     "&tipoMensaje=alert-danger ");
             } else {
-                req.session.usuario = usuarios[0].email;
-                console.log("Login: usuario con email = "+ req.session.usuario + " identificado");
+                req.session.usuario = usuarios[0];
+                console.log("Login: usuario con email = "+ req.session.usuario.email + " identificado");
                 res.redirect("/user/list");
             }
         });
@@ -67,7 +67,7 @@ module.exports = function (app, swig, gestorBD) {
     app.get("/desconectarse", function (req, res) {
 
         if(req.session.usuario != null) {
-            console.log("Logout: usuario con email = "+ req.session.usuario + " desconectado");
+            console.log("Logout: usuario con email = "+ req.session.usuario.email + " desconectado");
             req.session.usuario = null;
         }
         var respuesta = swig.renderFile('views/bidentificacion.html', {});
@@ -77,7 +77,6 @@ module.exports = function (app, swig, gestorBD) {
     app.get("/user/list", function(req, res) {
         var criterio = {};
         if (req.query.busqueda != null) {
-            //criterio = {"email": {$regex: ".*" + req.query.busqueda + ".*"}};
             criterio = {
                 '$or': [{"name": {$regex: ".*" + req.query.busqueda + ".*"}
                 }, {"email": {$regex: ".*" + req.query.busqueda + ".*"}}]
@@ -101,11 +100,41 @@ module.exports = function (app, swig, gestorBD) {
                         usuarios: usuarios,
                         pgActual: pg,
                         pgUltima: pgUltima,
-                        sesionUsuario: req.session.usuario != null
+                        sesionUsuario: req.session.usuario
                     });
                 res.send(respuesta);
             }
         });
     });
+
+    app.get('/user/sendFriendRequest/:id', function(req, res) {
+        var emailReceiver = req.params.id;
+        var peticion = {
+        };
+        var criterio = { "email" : emailReceiver};
+        gestorBD.obtenerUsuarios(criterio, function(usuarios){
+            if(usuarios == null)
+                res.redirect("/user/list?mensaje=No existe el usuario;");
+            else{
+                peticion = {
+                    emailSender: req.session.usuario.email,
+                    nameSender: req.session.usuario.name,
+                    emailReceiver : emailReceiver,
+                    nameReceiver: usuarios[0].name
+                };
+            }
+            gestorBD.insertarPeticion(peticion, function(peticion) {
+                if (peticion == null) {
+                    res.redirect("/user/list?mensaje=No existe el usuario;");
+                } else {
+                    console.log("Peticion enviada por "+ req.session.usuario.email);
+                    res.redirect("/user/list");
+                }
+            });
+        });
+    })
+
+
+
 
 };
