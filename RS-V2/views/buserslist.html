@@ -31,9 +31,14 @@
                 <td>
                     {% if usuario.email != sesionUsuario.email %}
                         {%for peticion in peticiones %}
-                                {% if usuario.email == peticion.emailSender or usuario.email == peticion.emailReceiver  %}
+                                {% if usuario.email == peticion.emailReceiver  %}
                                     <a class="btn btn-warning  pull-right" disabled="true" >Petición enviada</a>
                                 {% set boton = "true" %}
+
+                                {% elif usuario.email == peticion.emailSender %}
+                                <a class="btn btn-warning  pull-right" disabled="true" >Petición recibida</a>
+                                {% set boton = "true" %}
+
                                 {% endif %}
                         {% endfor %}
 
