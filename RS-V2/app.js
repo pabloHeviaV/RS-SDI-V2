@@ -48,6 +48,9 @@ routerUsuarioToken.use(function (req, res, next) {
         });
     }
 });
+//Aplicar routeUsuarioToken
+app.use("/api/friends/", routerUsuarioToken);
+
 
 // routerUsuarioSession
 var routerUsuarioSession = express.Router();
@@ -77,7 +80,7 @@ app.set('crypto', crypto);
 
 //Rutas/controladores por lógica
 require("./routes/rusuarios.js")(app, swig, gestorBD);
-require("./routes/rapi")(app,gestorBD);
+require("./routes/rapiusuarios")(app,gestorBD);
 
 app.get('/', function (req, res) {
     res.redirect('/identificarse');

@@ -26,4 +26,23 @@ module.exports = function (app, gestorBD) {
             }
         });
     });
+
+
+    app.get("/api/friends/", function  (req, res){
+        var criterio = {
+            emailSender : res.usuario
+        };
+        gestorBD.obtenerAmistades(criterio, function (amistades){
+                if (amistades == null) {
+                    res.status(500);
+                    res.json({
+                        error: "Se ha producido un error"
+                    })
+                } else {
+                    res.status(200);
+                    res.send(JSON.stringify(amistades));
+                }
+        }
+        );
+    });
 };
