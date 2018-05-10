@@ -126,4 +126,31 @@ module.exports = function (app, gestorBD) {
         })
 
     })
+
+    app.put("/api/mensaje/:id", function (req, res) {
+        var criterio = {
+            _id : gestorBD.mongo.ObjectID(req.params.id),
+            receptor : res.usuario
+        }
+        var mensaje = {
+            leido : true
+        }
+
+        gestorBD.modificarMensaje(criterio, mensaje, function (result) {
+            if(result == null) {
+                res.status(500);
+                res.json({
+                    error: "Se ha producido un error al modificar el mensaje"
+                })
+            }
+            else {
+                res.status(200);
+                res.json({
+                    mensaje: "Mensaje modificado",
+                    _id: req.params.id
+                })
+                console.log("Modificado el mensaje " + req.params.id);
+            }
+        })
+    })
 };
