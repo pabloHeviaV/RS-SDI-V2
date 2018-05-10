@@ -92,18 +92,52 @@ module.exports = function (app, swig, gestorBD) {
             if (usuarios == null) {
                 res.send("Error al listar ");
             } else {
-                var pgUltima = total / 5;
-                if (total % 5 > 0) { // Sobran decimales
-                    pgUltima = pgUltima + 1;
-                }
-                var respuesta = swig.renderFile('views/buserslist.html',
-                    {
-                        usuarios: usuarios,
-                        pgActual: pg,
-                        pgUltima: pgUltima,
-                        sesionUsuario: req.session.usuario
-                    });
-                res.send(respuesta);
+                criterio = {
+                    $or: [{
+                        emailSender: req.session.usuario.email
+                    },
+                        {emailReceiver: req.session.usuario.email}
+                    ]
+                };
+                gestorBD.obtenerPeticiones(criterio, function (peticiones) {
+                    if (peticiones == null)
+                        res.redirect("/user/list?mensaje=No existe la peticion;");
+                    else {
+
+                        criterio = {
+                            $or: [{
+                                emailSender: req.session.usuario.email
+                            },
+                                {emailReceiver: req.session.usuario.email}
+                            ]
+                        };
+
+
+                        gestorBD.obtenerAmistades(criterio, function (amistades) {
+                            if (amistades == null)
+                                res.redirect("/user/list?mensaje=No existe la amistad;");
+                            else {
+                                var pgUltima = total / 5;
+                                if (total % 5 > 0) { // Sobran decimales
+                                    pgUltima = pgUltima + 1;
+                                }
+
+                                var respuesta = swig.renderFile('views/buserslist.html',
+                                    {
+                                        usuarios: usuarios,
+                                        pgActual: pg,
+                                        pgUltima: pgUltima,
+                                        sesionUsuario: req.session.usuario,
+                                        peticiones: peticiones,
+                                        amistades: amistades
+                                    });
+                                res.send(respuesta);
+                            }
+
+                        });
+                    }
+
+                });
             }
         });
     });
@@ -176,7 +210,7 @@ module.exports = function (app, swig, gestorBD) {
                     emailSender: emailSender,
                     nameSender: peticiones[0].nameSender,
                     emailReceiver: req.session.usuario.email,
-                    nameReceiver: req.session.usuario.email
+                    nameReceiver: req.session.usuario.name
                 };
                 amistadReciever = {
                     emailSender: req.session.usuario.email,

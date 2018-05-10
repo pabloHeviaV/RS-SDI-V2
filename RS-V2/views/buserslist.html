@@ -24,12 +24,29 @@
             </thead>
             <tbody>
             {%for usuario in usuarios %}
+            {% set boton = "false" %}
             <tr>
                 <td>{{ usuario.name }}</td>
                 <td>{{ usuario.email }}</td>
                 <td>
                     {% if usuario.email != sesionUsuario.email %}
-                        <a class="btn btn-primary  pull-right" href="/user/sendFriendRequest/{{ usuario.email }}" >Agregar amigo</a>
+                        {%for peticion in peticiones %}
+                                {% if usuario.email == peticion.emailSender or usuario.email == peticion.emailReceiver  %}
+                                    <a class="btn btn-warning  pull-right" disabled="true" >Petición enviada</a>
+                                {% set boton = "true" %}
+                                {% endif %}
+                        {% endfor %}
+
+                        {%for amistad in amistades %}
+                                {% if usuario.email == amistad.emailSender %}
+                                <a class="btn btn-success  pull-right" disabled="true" >Ya sois amigos</a>
+                                {% set boton = "true" %}
+                                {% endif %}
+                        {% endfor %}
+
+                        {%if boton == "false" %}
+                            <a class="btn btn-primary  pull-right" href="/user/sendFriendRequest/{{ usuario.email }}" >Agregar amigo</a>
+                        {% endif %}
                     {% endif %}
                 </td>
             </tr>
