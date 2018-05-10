@@ -198,13 +198,24 @@ module.exports = {
         });
     },
 
-    //TODO: añadir el resto de colecciones que se vayan creando aquí
     clearDB: function () {
         this.mongo.MongoClient.connect(this.app.get('db'), function (err, db) {
             if (!err) {
                 db.dropCollection("usuarios", function (err, delOK) {
                     if (err) console.log("Se ha producido un error al borrar la collection usuarios");
                     if (delOK) console.log("Collection usuarios borrada");
+                    db.close();
+                });
+
+                db.dropCollection("amistades", function (err, delOK) {
+                    if (err) console.log("Se ha producido un error al borrar la collection amistades");
+                    if (delOK) console.log("Collection amistades borrada");
+                    db.close();
+                });
+
+                db.dropCollection("peticiones", function (err, delOK) {
+                    if (err) console.log("Se ha producido un error al borrar la collection peticiones");
+                    if (delOK) console.log("Collection peticiones borrada");
                     db.close();
                 });
             }
@@ -215,6 +226,18 @@ module.exports = {
                 db.createCollection("usuarios", function (err, delOK) {
                     if (err) console.log("Se ha producido un error al crear la collection usuarios");
                     if (delOK) console.log("Collection usuarios creada");
+                    db.close();
+                });
+
+                db.createCollection("amistades", function (err, delOK) {
+                    if (err) console.log("Se ha producido un error al crear la collection amistades");
+                    if (delOK) console.log("Collection amistades creada");
+                    db.close();
+                });
+
+                db.createCollection("peticiones", function (err, delOK) {
+                    if (err) console.log("Se ha producido un error al crear la collection peticiones");
+                    if (delOK) console.log("Collection peticiones creada");
                     db.close();
                 });
             }
