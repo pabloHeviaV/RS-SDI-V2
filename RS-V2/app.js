@@ -49,8 +49,8 @@ routerUsuarioToken.use(function (req, res, next) {
     }
 });
 //Aplicar routeUsuarioToken
-app.use("/api/friends/", routerUsuarioToken);
-app.use("/api/message/", routerUsuarioToken);
+app.use("/api/usuarios/", routerUsuarioToken);
+app.use("/api/mensaje/", routerUsuarioToken);
 
 
 // routerUsuarioSession

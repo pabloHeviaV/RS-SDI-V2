@@ -28,7 +28,7 @@ module.exports = function (app, gestorBD) {
     });
 
 
-    app.get("/api/friends/", function  (req, res){
+    app.get("/api/usuarios/", function  (req, res){
         var criterio = {
             emailSender : res.usuario
         };
@@ -47,7 +47,7 @@ module.exports = function (app, gestorBD) {
         );
     });
 
-    app.post("/api/message/", function (req, res){
+    app.post("/api/mensaje/", function (req, res){
 
         var criterio = {
             emailSender : res.usuario,
@@ -96,4 +96,34 @@ module.exports = function (app, gestorBD) {
 
 
     });
+
+    app.get("/api/mensaje/", function (req, res) {
+        var criterio = {
+            $or: [{
+                    emisor : res.usuario,
+                    receptor : req.query.receptor
+                },
+                {
+                    emisor : req.query.receptor,
+                    receptor : res.usuario
+                }]
+        }
+
+        gestorBD.obtenerMensajes(criterio, function (mensajes) {
+            if(mensajes == null) {
+                res.status(500);
+                res.json({
+                    error: "Se ha producido un error al obtener"
+                })
+            }
+            else {
+                res.status(200);
+                res.send(JSON.stringify(mensajes));
+                console.log("Listados los mensajes entre "
+                    + res.usuario + " y " + req.query.receptor);
+            }
+
+        })
+
+    })
 };
