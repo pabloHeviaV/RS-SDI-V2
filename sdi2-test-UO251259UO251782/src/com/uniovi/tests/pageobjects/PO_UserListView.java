@@ -16,7 +16,7 @@ public class PO_UserListView extends PO_NavView{
     driver.findElement(boton).click(); 
   } 
    
-  static public void sendFriendRequest(WebDriver driver, int id) { 
+  static public void sendFriendRequest(WebDriver driver, String id) { 
     //Buscamos el botón del usuario con el id indicado y lo pulsamos 
     By boton = By.id("fRButton" + id); 
     driver.findElement(boton).click(); 

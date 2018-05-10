@@ -21,7 +21,7 @@
                 <td>{{ peticion.nameSender }}</td>
                 <td>{{ peticion.emailSender }}</td>
                 <td>
-                    <a class="btn btn-primary  pull-right" href="/user/acceptFriendRequest/{{ peticion.emailSender }}" >Aceptar</a>
+                    <a class="btn btn-primary  pull-right" id="fRButton{{ peticion.emailSender }}" href="/user/acceptFriendRequest/{{ peticion.emailSender }}" >Aceptar</a>
                 </td>
             </tr>
             {% endfor %}

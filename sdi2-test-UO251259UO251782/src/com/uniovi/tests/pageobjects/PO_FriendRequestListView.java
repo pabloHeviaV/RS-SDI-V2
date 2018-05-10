@@ -10,7 +10,7 @@ public class PO_FriendRequestListView extends PO_NavView {
 	 * @param driver
 	 * @param id
 	 */
-	static public void acceptFriendRequest(WebDriver driver, int id) {
+	static public void acceptFriendRequest(WebDriver driver, String id) {
 		By boton = By.id("fRButton" + id);
 		driver.findElement(boton).click();
 	}

@@ -1,6 +1,5 @@
 package com.uniovi.tests;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
@@ -12,7 +11,6 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -66,7 +64,7 @@ public class RSTests {
 		WebDriver driver = new FirefoxDriver();
 		return driver;
 	}
-
+	
 	// 1.1 [RegVal] Registro de Usuario con datos válidos.
 	@Test
 	public void PR1_1() {
@@ -143,15 +141,21 @@ public class RSTests {
 		// Nos devuelve a la página de login
 		PO_LoginView.checkKey(driver, "Identificación de usuario");
 	}
-/*
+
 	// 5.1 [InvVal] Enviar una invitación de amistad a un usuario de forma valida.
 	@Test
 	public void PR5_1() {
+		//Registramos dos usuarios
+		PO_HomeView.clickOption(driver, "registrarse", "class", "btn btn-primary");
+		PO_RegisterView.fillForm(driver, "1@uniovi.es", "Maria", "Suarez", "123456", "123456");
+		PO_HomeView.clickOption(driver, "registrarse", "class", "btn btn-primary");
+		PO_RegisterView.fillForm(driver, "2@uniovi.es", "Paula", "Gonzalez", "123456", "123456");
+		
 		// Nos logueamos
 		PO_HomeView.clickOption(driver, "identificarse", "class", "btn btn-primary");
 		PO_LoginView.fillForm(driver, "1@uniovi.es", "123456");
 		// Enviamos una solicitud al usuario 2
-		PO_UserListView.sendFriendRequest(driver, 2);
+		PO_UserListView.sendFriendRequest(driver, "2@uniovi.es");
 		// Nos deslogueamos
 		PO_HomeView.clickOption(driver, "desconectarse", "class", "btn btn-primary");
 
@@ -180,22 +184,18 @@ public class RSTests {
 		// Nos logueamos
 		PO_HomeView.clickOption(driver, "identificarse", "class", "btn btn-primary");
 		PO_LoginView.fillForm(driver, "1@uniovi.es", "123456");
-		// Enviamos una solicitud al usuario 5
-		PO_UserListView.sendFriendRequest(driver, 5);
-		// Comprobamos que el botón está deshabilitado
-		By boton = By.id("fRButton5");
-		PO_View.checkElement(driver, "id", "fRButton5");
-		assertFalse(driver.findElement(boton).isEnabled());
-
+		
+		// Comprobamos que la petición ya había sido enviada
+		PO_View.checkElement(driver, "text", "Petición enviada");
 	}
-
+	
 	// 6.1 [LisInvVal] Listar las invitaciones recibidas por un usuario, realizar la
 	// comprobación con una lista que al menos tenga una invitación recibida.
 	@Test
 	public void PR6_1() {
-		// Nos logueamos con el usuario 1 que ya tiene 3 peticiones de amistad
+		// Nos logueamos con el usuario 2 que tiene 1 peticion de amistad
 		PO_HomeView.clickOption(driver, "identificarse", "class", "btn btn-primary");
-		PO_LoginView.fillForm(driver, "1@uniovi.es", "123456");
+		PO_LoginView.fillForm(driver, "2@uniovi.es", "123456");
 
 		// Vamos a la lista de solicitudes
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li[contains(@id, 'fr-menu')]/a");
@@ -204,19 +204,19 @@ public class RSTests {
 		elementos.get(0).click();
 
 		// Comprobamos que entramos en la página de las solicitudes de amistad
-		PO_View.checkElement(driver, "text", "solicitudes de amistad");
+		PO_View.checkElement(driver, "text", "Solicitudes de amistad");
 		// Contamos el número de filas de solicitudes
 		List<WebElement> filas = PO_View.checkElement(driver, "free", "//tbody/tr");
-		assertTrue(filas.size() == 3);
+		assertTrue(filas.size() == 1);
 
 	}
-
+	
 	// 7.1 [AcepInvVal] Aceptar una invitación recibida.
 	@Test
 	public void PR7_1() {
-		// Nos logueamos con el usuario 1 que ya tiene 3 peticiones de amistad
+		// Nos logueamos con el usuario 2 que tiene 1 peticion de amistad
 		PO_HomeView.clickOption(driver, "identificarse", "class", "btn btn-primary");
-		PO_LoginView.fillForm(driver, "1@uniovi.es", "123456");
+		PO_LoginView.fillForm(driver, "2@uniovi.es", "123456");
 
 		// Vamos a la lista de solicitudes
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li[contains(@id, 'fr-menu')]/a");
@@ -225,54 +225,41 @@ public class RSTests {
 		elementos.get(0).click();
 
 		// Comprobamos que entramos en la página de las solicitudes de amistad
-		PO_View.checkElement(driver, "text", "solicitudes de amistad");
+		PO_View.checkElement(driver, "text", "Solicitudes de amistad");
 
-		// Aceptamos la petición de amistad con id 1 (la del usuario 2)
-		PO_FriendRequestListView.acceptFriendRequest(driver, 1);
+		// Aceptamos la petición de amistad
+		PO_FriendRequestListView.acceptFriendRequest(driver, "1@uniovi.es");
 
 		// Vamos a la lista de amigos
 		elementos = PO_View.checkElement(driver, "free", "//li[contains(@id, 'friends-menu')]/a");
 		elementos.get(0).click();
-		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href, 'user/listFriends')]");
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href, '/friendship/list')]");
 		elementos.get(0).click();
 
-		// Comprobamos que está el usuario 2
-		PO_View.checkElement(driver, "text", "2@uniovi.es");
+		// Comprobamos que está el usuario 1
+		PO_View.checkElement(driver, "text", "1@uniovi.es");
 	}
-
+	
 	// 8.1 [ListAmiVal] Listar los amigos de un usuario, realizar la comprobación
 	// con una lista que al menos tenga un amigo.
 	@Test
 	public void PR8_1() {
-		// Nos logueamos con el usuario 1 que ya tiene 2 peticiones de amistad y un
-		// amigo
+		// Nos logueamos con el usuario 1 que tiene 1 amigo
 		PO_HomeView.clickOption(driver, "identificarse", "class", "btn btn-primary");
 		PO_LoginView.fillForm(driver, "1@uniovi.es", "123456");
 
 		// Vamos a la lista de solicitudes
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li[contains(@id, 'fr-menu')]/a");
-		elementos.get(0).click();
-		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href, 'friendRequest/list')]");
-		elementos.get(0).click();
-
-		// Comprobamos que entramos en la página de las solicitudes de amistad
-		PO_View.checkElement(driver, "text", "solicitudes de amistad");
-
-		// Aceptamos todas las peticiones de amistad
-		PO_FriendRequestListView.acceptFriendRequest(driver, 2);
-		// Esperamos a que se recargue la página
-		PO_View.checkElement(driver, "id", "fRButton3");
-		PO_FriendRequestListView.acceptFriendRequest(driver, 3);
 
 		// Vamos a la lista de amigos
 		elementos = PO_View.checkElement(driver, "free", "//li[contains(@id, 'friends-menu')]/a");
 		elementos.get(0).click();
-		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href, 'user/listFriends')]");
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href, '/friendship/list')]");
 		elementos.get(0).click();
 
-		// Contamos que tiene 3 amigos
+		// Contamos que tiene 1 amigo
 		List<WebElement> filas = PO_View.checkElement(driver, "free", "//tbody/tr");
-		assertTrue(filas.size() == 3);
+		assertTrue(filas.size() == 1);
 	}
-*/
+
 }
