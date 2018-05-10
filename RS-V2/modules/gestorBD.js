@@ -274,6 +274,12 @@ module.exports = {
                     if (delOK) console.log("Collection peticiones borrada");
                     db.close();
                 });
+
+                db.dropCollection("mensajes", function (err, delOK) {
+                    if (err) console.log("Se ha producido un error al borrar la collection mensajes");
+                    if (delOK) console.log("Collection mensajes borrada");
+                    db.close();
+                });
             }
         });
         this.mongo.MongoClient.connect(this.app.get('db'), function (err, db) {
@@ -294,6 +300,12 @@ module.exports = {
                 db.createCollection("peticiones", function (err, delOK) {
                     if (err) console.log("Se ha producido un error al crear la collection peticiones");
                     if (delOK) console.log("Collection peticiones creada");
+                    db.close();
+                });
+
+                db.createCollection("mensajes", function (err, delOK) {
+                    if (err) console.log("Se ha producido un error al crear la collection mensajes");
+                    if (delOK) console.log("Collection peticiones mensajes");
                     db.close();
                 });
             }
