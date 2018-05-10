@@ -41,8 +41,59 @@ module.exports = function (app, gestorBD) {
                 } else {
                     res.status(200);
                     res.send(JSON.stringify(amistades));
+                    console.log("Listadas las amistades de " + res.usuario);
                 }
         }
         );
+    });
+
+    app.post("/api/message/", function (req, res){
+
+        var criterio = {
+            emailSender : res.usuario,
+            emailReceiver : req.body.receptor
+        }
+
+        gestorBD.obtenerAmistades(criterio, function(amistades){
+            if (amistades.length == 0) {
+                res.status(500);
+                res.json({
+                    error: "Se ha producido un error, los usuarios no son amigos"
+                })
+                console.log("Envío de mensajes: error al enviar mensaje entre" +
+                   criterio.emailSender + " y " + criterio.emailReceiver + " no son amigos");
+            } else {
+                var mensaje = {
+                    emisor : res.usuario,
+                    receptor : req.body.receptor,
+                    texto : req.body.texto,
+                    leido : false
+                }
+
+                gestorBD.crearMensaje(mensaje, function (result) {
+                    if(result == null) {
+                        res.status(500);
+                        res.json({
+                            error: "Se ha producido un error al crear el mensaje"
+                        })
+                        console.log("Envío de mensajes: error al enviar mensaje entre"
+                            + mensaje.emisor + " y " + mensaje.receptor);
+                    }
+                    else {
+                        res.status(200);
+                        res.json({
+                            mensaje : "mensaje creado",
+                            _id :  result
+                        })
+                        console.log("Envío de mensajes: mensaje creado entre "
+                            + mensaje.emisor + " y "
+                            + mensaje.receptor + "con id: " + result);
+                    }
+                });
+
+            }
+        });
+
+
     });
 };

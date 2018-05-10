@@ -50,6 +50,7 @@ routerUsuarioToken.use(function (req, res, next) {
 });
 //Aplicar routeUsuarioToken
 app.use("/api/friends/", routerUsuarioToken);
+app.use("/api/message/", routerUsuarioToken);
 
 
 // routerUsuarioSession
