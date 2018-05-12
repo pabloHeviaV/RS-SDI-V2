@@ -14,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
+      <file leaf-file-name="widget-mensajes.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/widget-mensajes.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="92" column="52" selection-start-line="92" selection-start-column="52" selection-end-line="92" selection-end-column="52" />
+            <state relative-caret-position="578">
+              <caret line="94" column="18" selection-start-line="94" selection-start-column="18" selection-end-line="94" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -26,17 +26,17 @@
       <file leaf-file-name="cliente.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/cliente.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="34" column="72" selection-start-line="34" selection-start-column="72" selection-end-line="34" selection-end-column="72" />
+            <state relative-caret-position="191">
+              <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="widget-amigos.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="widget-amigos.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/widget-amigos.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="647">
-              <caret line="100" column="39" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
+            <state relative-caret-position="480">
+              <caret line="90" column="27" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -57,6 +57,9 @@
       <find>mensajesCon</find>
       <find>mensajes</find>
       <find>clearInterval</find>
+      <find>Filtra</find>
+      <find>widgetAmigos()</find>
+      <find>receptor</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -73,8 +76,8 @@
         <option value="$PROJECT_DIR$/routes/rusuarios.js" />
         <option value="$PROJECT_DIR$/public/cliente.html" />
         <option value="$PROJECT_DIR$/routes/rapiusuarios.js" />
-        <option value="$PROJECT_DIR$/public/widget-mensajes.html" />
         <option value="$PROJECT_DIR$/public/widget-amigos.html" />
+        <option value="$PROJECT_DIR$/public/widget-mensajes.html" />
       </list>
     </option>
   </component>
@@ -93,8 +96,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="707" />
-    <option name="width" value="1220" />
+    <option name="x" value="865" />
+    <option name="width" value="1062" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
@@ -188,18 +191,18 @@
       <workItem from="1525885281226" duration="24096000" />
       <workItem from="1525945522574" duration="13170000" />
       <workItem from="1526052895235" duration="19107000" />
-      <workItem from="1526147302919" duration="1109000" />
+      <workItem from="1526147302919" duration="3168000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66782000" />
+    <option name="totallyTimeSpent" value="68841000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="707" y="0" width="1220" height="1047" extended-state="0" />
+    <frame x="865" y="0" width="1062" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20431894" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23518164" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
@@ -379,13 +382,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/widget-mensajes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="60" column="39" selection-start-line="60" selection-start-column="27" selection-end-line="60" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -402,15 +398,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/cliente.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="34" column="72" selection-start-line="34" selection-start-column="72" selection-end-line="34" selection-end-column="72" />
+        <state relative-caret-position="191">
+          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/widget-amigos.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="647">
-          <caret line="100" column="39" selection-start-line="100" selection-start-column="39" selection-end-line="100" selection-end-column="39" />
+        <state relative-caret-position="480">
+          <caret line="90" column="27" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/widget-mensajes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="94" column="18" selection-start-line="94" selection-start-column="18" selection-end-line="94" selection-end-column="18" />
         </state>
       </provider>
     </entry>

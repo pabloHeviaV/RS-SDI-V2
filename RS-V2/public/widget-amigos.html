@@ -52,8 +52,11 @@
 
     cargarAmigos();
 
+    var aux;
+
     function widgetAmigos() {
         $("#contenedor-principal").load("widget-amigos.html");
+        aux = false;
     }
 
     $('#filtro-nombre').on('input', function (e) {
@@ -70,7 +73,6 @@
     });
 
     var mensajes;
-    var len = 0;
 
     function cargarMensajes(amigo) {
         $("#contenedor-principal").load("widget-mensajes.html");
@@ -84,9 +86,9 @@
             },
             success: function (respuesta) {
                 mensajes = respuesta;
-                len = mensajes.length;
-                $("#receptor").text(amigo);
                 actualizarTablaMensajes(mensajes);
+                $("#receptor").text(amigo);
+                aux = true;
             },
             error: function (error) {
                 clearInterval(intervalMId);

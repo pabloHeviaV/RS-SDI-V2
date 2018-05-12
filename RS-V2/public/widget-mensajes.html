@@ -26,7 +26,8 @@
 
 <script>
     intervalMId = setInterval(function () {
-        cargarMensajes();
+        if (aux)
+            cargarMensajes();
     }, 1000);
 
     function cargarMensajes() {
@@ -42,10 +43,7 @@
 
                 mensajes = respuesta;
                 marcarMensajesComoLeidos(mensajes);
-                if (mensajes.length > len) {
-
-                    actualizarTablaMensajes(mensajes);
-                }
+                actualizarTablaMensajes(mensajes);
             },
             error: function (error) {
 
