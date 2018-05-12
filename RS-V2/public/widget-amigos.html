@@ -85,8 +85,8 @@
             success: function (respuesta) {
                 mensajes = respuesta;
                 len = mensajes.length;
-                actualizarTablaMensajes(mensajes);
                 $("#receptor").text(amigo);
+                actualizarTablaMensajes(mensajes);
             },
             error: function (error) {
                 clearInterval(intervalMId);
@@ -97,11 +97,16 @@
 
 
     function actualizarTablaMensajes(mensajesMostrar) {
+
         $("#tablaMensajes").empty(); // Vaciar la tabla
         for (i = 0; i < mensajesMostrar.length; i++) {
-            $("#tablaMensajes").append(
-                "<tr id=" + mensajesMostrar[i]._id + ">" + "<td>"
-                + mensajesMostrar[i].emisor + ": " + mensajesMostrar[i].texto + "</td>");
+            var message = "<tr id=" + mensajesMostrar[i]._id + ">" + "<td>"
+                + mensajesMostrar[i].emisor + ": " + mensajesMostrar[i].texto ;
+
+            if(mensajesMostrar[i].leido && (mensajesMostrar[i].emisor != $("#receptor").text()))
+            {message+= "<b> leído</b>";}
+
+            $("#tablaMensajes").append(message + "</td>");
         }
     }
 

@@ -13,7 +13,7 @@
             <label class="control-label col-sm-2" for="texto">Mensaje:</label>
             <div class="col-sm-10">
                 <input id="textoMensaje" type="text" class="form-control"
-                       name="texto" placeholder="Hola, ¿Qué tal?" required="true" />
+                       name="texto" placeholder="Hola, ¿Qué tal?" required="true"/>
             </div>
         </div>
         <div class="form-group">
@@ -25,9 +25,9 @@
 </div>
 
 <script>
-    intervalMId = setInterval(function() {
+    intervalMId = setInterval(function () {
         cargarMensajes();
-    }, 10000);
+    }, 1000);
 
     function cargarMensajes() {
         $.ajax({
@@ -38,19 +38,48 @@
             headers: {
                 "token": token
             },
-            success: function(respuesta) {
+            success: function (respuesta) {
+
                 mensajes = respuesta;
+                marcarMensajesComoLeidos(mensajes);
                 if (mensajes.length > len) {
+
                     actualizarTablaMensajes(mensajes);
                 }
             },
-            error: function(error) {
+            error: function (error) {
+
                 clearInterval(intervalMId);
                 $("#contenedor-principal").load("widget-login.html");
             }
         });
     }
 
+    function marcarMensajesComoLeidos(mensajes) {
+        for (i = 0; i < mensajes.length; i++) {
+
+            //Si eres el receptor del mensaje puedes marcarlo como leído (esto también se comprueba del lado del servidor)
+            if (mensajes[i].emisor == $("#receptor").text() && !mensajes[i].leido) {
+
+                $.ajax({
+                    url: URLbase + "/mensaje/" + mensajes[i]._id,
+                    type: "PUT",
+                    data: {},
+                    dataType: 'json',
+                    headers: {
+                        "token": token
+                    },
+                    success: function(respuesta){
+                        actualizarTablaMensajes(mensajes);
+                    },
+                    error: function (error) {
+                        clearInterval(intervalMId);
+                        $("#contenedor-principal").load("widget-login.html");
+                    }
+                });
+            }
+        }
+    }
 
     function enviarMensaje() {
         $.ajax({
@@ -64,10 +93,10 @@
             headers: {
                 "token": token
             },
-            success: function(res) {
+            success: function (res) {
                 $("#textoMensaje").val('');
             },
-            error: function(error) {
+            error: function (error) {
                 $("#contenedor-principal").load("widget-login.html");
             }
         });

@@ -87,7 +87,7 @@ module.exports = function (app, gestorBD) {
                         })
                         console.log("Envío de mensajes: mensaje creado entre "
                             + mensaje.emisor + " y "
-                            + mensaje.receptor + "con id: " + result);
+                            + mensaje.receptor + " con id: " + result);
                     }
                 });
 
@@ -135,7 +135,7 @@ module.exports = function (app, gestorBD) {
         var mensaje = {
             leido : true
         }
-
+        console.log("put mensaje");
         gestorBD.modificarMensaje(criterio, mensaje, function (result) {
             if(result == null) {
                 res.status(500);
