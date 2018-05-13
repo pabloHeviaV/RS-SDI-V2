@@ -54,8 +54,9 @@ public class RSTests {
 
 	// En Windows (Debe ser la versi�n 46.0 y desactivar las actualizacioens
 	// autom�ticas)):
-	//static String PathFirefox = "C:\\Users\\yo\\Desktop\\SDI\\entorno-sdi\\entorno-sdi\\firefox\\FirefoxPortable.exe";
-	static String PathFirefox = "C:\\Firefox46.win\\FirefoxPortable.exe";
+	 static String PathFirefox =
+	 "C:\\Users\\yo\\Desktop\\SDI\\entorno-sdi\\entorno-sdi\\firefox\\FirefoxPortable.exe";
+//	static String PathFirefox = "C:\\Firefox46.win\\FirefoxPortable.exe";
 	static WebDriver driver = getDriver(PathFirefox);
 	static String URL = "http://localhost:8081";
 	static String URLCliente = "http://localhost:8081/cliente.html";
@@ -66,21 +67,21 @@ public class RSTests {
 		WebDriver driver = new FirefoxDriver();
 		return driver;
 	}
-	
+
 	// 1.1 [RegVal] Registro de Usuario con datos válidos.
 	@Test
 	public void PR1_1() {
 		PO_HomeView.clickOption(driver, "registrarse", "class", "btn btn-primary");
 		PO_RegisterView.fillForm(driver, "7@uniovi.es", "Pablo", "Menendez", "123456", "123456");
 		PO_LoginView.checkKey(driver, "Identificación de usuario");
-		
-		//Registramos otros 3 usuarios
+
+		// Registramos otros 3 usuarios
 		PO_HomeView.clickOption(driver, "registrarse", "class", "btn btn-primary");
 		PO_RegisterView.fillForm(driver, "1@uniovi.es", "Maria", "Suarez", "123456", "123456");
 		PO_HomeView.clickOption(driver, "registrarse", "class", "btn btn-primary");
 		PO_RegisterView.fillForm(driver, "2@uniovi.es", "Paula", "Gonzalez", "123456", "123456");
 		PO_HomeView.clickOption(driver, "registrarse", "class", "btn btn-primary");
-		PO_RegisterView.fillForm(driver, "3@uniovi.es", "Pablo", "Hevia", "123456", "123456");
+		PO_RegisterView.fillForm(driver, "3@uniovi.es", "Fernando", "Hevia", "123456", "123456");
 	}
 
 	// 1.2 [RegInval] Registro de Usuario con datos inválidos (repetición de
@@ -161,13 +162,13 @@ public class RSTests {
 		// Enviamos una solicitud al usuario 2
 		PO_UserListView.sendFriendRequest(driver, "2@uniovi.es");
 		SeleniumUtils.esperarSegundos(driver, 4);
-		
-		//Enviamos otras 2 solicitudes mas
+
+		// Enviamos otras 2 solicitudes mas
 		PO_UserListView.sendFriendRequest(driver, "3@uniovi.es");
 		SeleniumUtils.esperarSegundos(driver, 4);
 		PO_UserListView.sendFriendRequest(driver, "7@uniovi.es");
 		SeleniumUtils.esperarSegundos(driver, 4);
-		
+
 		// Nos deslogueamos
 		PO_HomeView.clickOption(driver, "desconectarse", "class", "btn btn-primary");
 
@@ -195,11 +196,11 @@ public class RSTests {
 		// Nos logueamos
 		PO_HomeView.clickOption(driver, "identificarse", "class", "btn btn-primary");
 		PO_LoginView.fillForm(driver, "1@uniovi.es", "123456");
-		
+
 		// Comprobamos que la petición ya había sido enviada
 		PO_View.checkElement(driver, "text", "Petición enviada");
 	}
-	
+
 	// 6.1 [LisInvVal] Listar las invitaciones recibidas por un usuario, realizar la
 	// comprobación con una lista que al menos tenga una invitación recibida.
 	@Test
@@ -221,7 +222,7 @@ public class RSTests {
 		assertTrue(filas.size() == 1);
 
 	}
-	
+
 	// 7.1 [AcepInvVal] Aceptar una invitación recibida.
 	@Test
 	public void PR7_1() {
@@ -251,7 +252,7 @@ public class RSTests {
 		// Comprobamos que está el usuario 1
 		PO_View.checkElement(driver, "text", "1@uniovi.es");
 	}
-	
+
 	// 7.2 [AcepInvVal] Aceptar una invitación recibida. (Prueba auxiliar)
 	@Test
 	public void PR7_2() {
@@ -267,7 +268,7 @@ public class RSTests {
 		SeleniumUtils.esperarSegundos(driver, 2);
 		PO_FriendRequestListView.acceptFriendRequest(driver, "1@uniovi.es");
 	}
-	
+
 	// 7.3 [AcepInvVal] Aceptar una invitación recibida. (Prueba auxiliar)
 	@Test
 	public void PR7_3() {
@@ -283,8 +284,7 @@ public class RSTests {
 		SeleniumUtils.esperarSegundos(driver, 2);
 		PO_FriendRequestListView.acceptFriendRequest(driver, "1@uniovi.es");
 	}
-		
-	
+
 	// 8.1 [ListAmiVal] Listar los amigos de un usuario, realizar la comprobación
 	// con una lista que al menos tenga un amigo.
 	@Test
@@ -306,104 +306,169 @@ public class RSTests {
 		List<WebElement> filas = PO_View.checkElement(driver, "free", "//tbody/tr");
 		assertTrue(filas.size() == 3);
 	}
-	
+
 	// C1.1[[CInVal] Inicio de sesión con datos válidos.
 	@Test
 	public void PRC1_1() {
 		driver.navigate().to(URLCliente);
+		PO_LoginView.checkElement(driver, "text", "Email:");
 		PO_LoginView.fillForm(driver, "1@uniovi.es", "123456");
-		PO_LoginView.checkElement(driver,"text", "Amigos");
+		PO_LoginView.checkElement(driver, "text", "Amigos");
 	}
-	
-	// C1.2 [CInInVal] Inicio de sesión con datos inválidos (usuario no existente en la aplicación).
+
+	// C1.2 [CInInVal] Inicio de sesión con datos inválidos (usuario no existente en
+	// la aplicación).
 	@Test
 	public void PRC1_2() {
 		driver.navigate().to(URLCliente);
+		PO_LoginView.checkElement(driver, "text", "Email:");
 		PO_LoginView.fillForm(driver, "6@uniovi.es", "123456");
-		PO_LoginView.checkElement(driver,"text", "Usuario no encontrado");
+		PO_LoginView.checkElement(driver, "text", "Usuario no encontrado");
 	}
-	
-	// C.2.1 [CListAmiVal] Acceder a la lista de amigos de un usuario, que al menos tenga tres amigos.
+
+	// C.2.1 [CListAmiVal] Acceder a la lista de amigos de un usuario, que al menos
+	// tenga tres amigos.
 	@Test
 	public void PRC2_1() {
 		driver.navigate().to(URLCliente);
+		PO_LoginView.checkElement(driver, "text", "Email:");
 		PO_LoginView.fillForm(driver, "1@uniovi.es", "123456");
-		PO_LoginView.checkElement(driver,"text", "Amigos");
+		PO_LoginView.checkElement(driver, "text", "Amigos");
 		// Contamos que tiene 3 amigos
 		List<WebElement> filas = PO_View.checkElement(driver, "free", "//tbody/tr");
 		assertTrue(filas.size() == 3);
 	}
-	
-	// C.2.2 [CListAmiFil] Acceder a la lista de amigos de un usuario, y realizar un filtrado para encontrar a un
+
+	// C.2.2 [CListAmiFil] Acceder a la lista de amigos de un usuario, y realizar un
+	// filtrado para encontrar a un
 	// amigo concreto, el nombre a buscar debe coincidir con el de un amigo.
 	@Test
 	public void PRC2_2() {
 		driver.navigate().to(URLCliente);
+		PO_LoginView.checkElement(driver, "text", "Email:");
 		PO_LoginView.fillForm(driver, "1@uniovi.es", "123456");
-		PO_LoginView.checkElement(driver,"text", "Amigos");
+		PO_LoginView.checkElement(driver, "text", "Amigos");
 		SeleniumUtils.esperarSegundos(driver, 2);
 		PO_UserListView.search(driver, "Pablo");
 		PO_View.checkElement(driver, "text", "Pablo");
 	}
-	
-	// C3.1 [CListMenVal] Acceder a la lista de mensajes de un amigo “chat”, la lista debe contener al menos
-	//tres mensajes.
+
+	// C3.1 [CListMenVal] Acceder a la lista de mensajes de un amigo “chat”, la
+	// lista debe contener al menos
+	// tres mensajes.
 	@Test
 	public void PRC3_1() {
 		driver.navigate().to(URLCliente);
+		PO_LoginView.checkElement(driver, "text", "Email:");
 		PO_LoginView.fillForm(driver, "1@uniovi.es", "123456");
-		PO_LoginView.checkElement(driver,"text", "Amigos");
+		PO_LoginView.checkElement(driver, "text", "Amigos");
 		SeleniumUtils.esperarSegundos(driver, 2);
-		
-		//Enviamos 3 mensajes
+
+		// Enviamos 3 mensajes
 		List<WebElement> elementos = PO_View.checkElement(driver, "text", "Paula");
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
-		//Escribimos primer mensaje
+		// Escribimos primer mensaje
 		PO_UserListView.sendMessage(driver, "Buenos días");
 		elementos = PO_View.checkElement(driver, "text", "Enviar");
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
-		//Escribimos segundo mensaje
+		// Escribimos segundo mensaje
 		PO_UserListView.sendMessage(driver, "¿Qué tal estas?");
 		elementos = PO_View.checkElement(driver, "text", "Enviar");
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
-		//Escribimos tercer mensaje
+		// Escribimos tercer mensaje
 		PO_UserListView.sendMessage(driver, "Hace mal tiempo");
 		elementos = PO_View.checkElement(driver, "text", "Enviar");
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
-		
+
 		// Contamos que tiene 3 mensajes
 		List<WebElement> mensajes = PO_View.checkElement(driver, "free", "//tbody/tr");
 		assertTrue(mensajes.size() == 3);
 	}
-	
-	// C4.1 [CCrearMenVal] Acceder a la lista de mensajes de un amigo “chat” y crear un nuevo mensaje,
+
+	// C4.1 [CCrearMenVal] Acceder a la lista de mensajes de un amigo “chat” y crear
+	// un nuevo mensaje,
 	// validar que el mensaje aparece en la lista de mensajes.
 	@Test
 	public void PRC4_1() {
 		driver.navigate().to(URLCliente);
+		PO_LoginView.checkElement(driver, "text", "Email:");
 		PO_LoginView.fillForm(driver, "3@uniovi.es", "123456");
-		PO_LoginView.checkElement(driver,"text", "Amigos");
+		PO_LoginView.checkElement(driver, "text", "Amigos");
 		SeleniumUtils.esperarSegundos(driver, 2);
-		
-		//Enviamos 1 mensaje
+
+		// Enviamos 1 mensaje
 		List<WebElement> elementos = PO_View.checkElement(driver, "text", "Maria");
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
-		//Escribimos primer mensaje
+		// Escribimos primer mensaje
 		PO_UserListView.sendMessage(driver, "Hola Maria, estas muy guapa");
 		elementos = PO_View.checkElement(driver, "text", "Enviar");
 		elementos.get(0).click();
 		SeleniumUtils.esperarSegundos(driver, 2);
-		
+
 		PO_View.checkElement(driver, "text", "Hola Maria, estas muy guapa");
 
 	}
 
-
-
+	// C5.1 [CMenLeidoVal] Identificarse en la aplicación y enviar un mensaje a un
+	// amigo, validar que el mensaje enviado aparece en el chat. Identificarse
+	// después con el usuario que recibido el mensaje y validar que tiene un mensaje
+	// sin leer, entrar en el chat y comprobar que el mensaje pasa a tener el estado
+	// leído.
+	@Test
+	public void PRC5_1() {
+		driver.navigate().to(URLCliente);
+		PO_LoginView.checkElement(driver, "text", "Email:");
+		PO_LoginView.fillForm(driver, "7@uniovi.es", "123456");
+		PO_LoginView.checkElement(driver, "text", "Amigos");
+		SeleniumUtils.esperarSegundos(driver, 2);
+		
+		// Enviamos 1 mensaje
+		List<WebElement> elementos = PO_View.checkElement(driver, "text", "Maria");
+		elementos.get(0).click();
+		SeleniumUtils.esperarSegundos(driver, 2);
+		// Escribimos primer mensaje
+		PO_UserListView.sendMessage(driver, "Buenos días, María");
+		elementos = PO_View.checkElement(driver, "text", "Enviar");
+		elementos.get(0).click();
+		SeleniumUtils.esperarSegundos(driver, 2);
+		
+		//Comprobamos que se ha enviado
+		PO_View.checkElement(driver, "text", "Buenos días, María");
+		
+		//Recargamos la página y nos logueamos con el receptor
+		driver.navigate().to(URLCliente);
+		PO_LoginView.checkElement(driver, "text", "Email:");
+		PO_LoginView.fillForm(driver, "1@uniovi.es", "123456");
+		PO_LoginView.checkElement(driver, "text", "Amigos");
+		SeleniumUtils.esperarSegundos(driver, 2);
+			
+		// Entramos al chat con 7@uniovi
+		elementos = PO_View.checkElement(driver, "text", "Pablo");
+		elementos.get(0).click();
+		SeleniumUtils.esperarSegundos(driver, 2);
+		
+		//Comprobamos que el mensaje se ha recibido, lo que lo marca como leído
+		PO_View.checkElement(driver, "text", "Buenos días, María");
+		
+		//Nos logueamos con 7@uniovi para ver el mensaje se ha marcado como leído
+		driver.navigate().to(URLCliente);
+		PO_LoginView.checkElement(driver, "text", "Email:");
+		PO_LoginView.fillForm(driver, "7@uniovi.es", "123456");
+		PO_LoginView.checkElement(driver, "text", "Amigos");
+		SeleniumUtils.esperarSegundos(driver, 2);
+		
+		//Entramos al chat
+		elementos = PO_View.checkElement(driver, "text", "Maria");
+		elementos.get(0).click();
+		SeleniumUtils.esperarSegundos(driver, 2);
+		
+		//Comprobamos que se ha marcado el mensaje como leído
+		PO_View.checkElement(driver, "text", "leído");
+	}
 
 }

@@ -62,13 +62,13 @@ module.exports = {
         });
     },
 
-    insertarPeticion: function(peticion, funcionCallback) {
-        this.mongo.MongoClient.connect(this.app.get('db'), function(err, db) {
+    insertarPeticion: function (peticion, funcionCallback) {
+        this.mongo.MongoClient.connect(this.app.get('db'), function (err, db) {
             if (err) {
                 funcionCallback(null);
             } else {
                 var collection = db.collection('peticiones');
-                collection.insert(peticion, function(err, result) {
+                collection.insert(peticion, function (err, result) {
                     if (err) {
                         funcionCallback(null);
                     } else {
@@ -80,13 +80,13 @@ module.exports = {
         });
     },
 
-    obtenerPeticiones: function(criterio, funcionCallback) {
-        this.mongo.MongoClient.connect(this.app.get('db'), function(err, db) {
+    obtenerPeticiones: function (criterio, funcionCallback) {
+        this.mongo.MongoClient.connect(this.app.get('db'), function (err, db) {
             if (err) {
                 funcionCallback(null);
             } else {
                 var collection = db.collection('peticiones');
-                collection.find(criterio).toArray(function(err, peticiones) {
+                collection.find(criterio).toArray(function (err, peticiones) {
                     if (err) {
                         funcionCallback(null);
                     } else {
@@ -139,13 +139,13 @@ module.exports = {
         });
     },
 
-    insertarAmistad: function(amistad, funcionCallback) {
-        this.mongo.MongoClient.connect(this.app.get('db'), function(err, db) {
+    insertarAmistad: function (amistad, funcionCallback) {
+        this.mongo.MongoClient.connect(this.app.get('db'), function (err, db) {
             if (err) {
                 funcionCallback(null);
             } else {
                 var collection = db.collection('amistades');
-                collection.insert(amistad, function(err, result) {
+                collection.insert(amistad, function (err, result) {
                     if (err) {
                         funcionCallback(null);
                     } else {
@@ -157,13 +157,13 @@ module.exports = {
         });
     },
 
-    obtenerAmistades: function(criterio, funcionCallback) {
-        this.mongo.MongoClient.connect(this.app.get('db'), function(err, db) {
+    obtenerAmistades: function (criterio, funcionCallback) {
+        this.mongo.MongoClient.connect(this.app.get('db'), function (err, db) {
             if (err) {
                 funcionCallback(null);
             } else {
                 var collection = db.collection('amistades');
-                collection.find(criterio).toArray(function(err, amistades) {
+                collection.find(criterio).toArray(function (err, amistades) {
                     if (err) {
                         funcionCallback(null);
                     } else {
@@ -198,26 +198,26 @@ module.exports = {
         });
     },
 
-    crearMensaje: function(mensaje, funcionCallback) {
-      this.mongo.MongoClient.connect(this.app.get('db'), function (err, db) {
-         if (err){
-             funcionCallback(null);
-         } else {
-             var collection = db.collection('mensajes');
-             collection.insert(mensaje, function (err, result){
-               if (err) {
-                   funcionCallback(null);
-               }
-               else{
-                   funcionCallback(result.ops[0]._id)
-               }
-             });
-         }
+    crearMensaje: function (mensaje, funcionCallback) {
+        this.mongo.MongoClient.connect(this.app.get('db'), function (err, db) {
+            if (err) {
+                funcionCallback(null);
+            } else {
+                var collection = db.collection('mensajes');
+                collection.insert(mensaje, function (err, result) {
+                    if (err) {
+                        funcionCallback(null);
+                    }
+                    else {
+                        funcionCallback(result.ops[0]._id)
+                    }
+                });
+            }
 
-      });
+        });
     },
 
-    obtenerMensajes: function(criterio, funcionCallback) {
+    obtenerMensajes: function (criterio, funcionCallback) {
         this.mongo.MongoClient.connect(this.app.get('db'), function (err, db) {
             if (err) {
                 funcionCallback(null);
@@ -257,55 +257,27 @@ module.exports = {
     clearDB: function () {
         this.mongo.MongoClient.connect(this.app.get('db'), function (err, db) {
             if (!err) {
-                db.dropCollection("usuarios", function (err, delOK) {
-                    if (err) console.log("Se ha producido un error al borrar la collection usuarios");
-                    if (delOK) console.log("Collection usuarios borrada");
+                db.dropCollection("usuarios", function () {
+
+                    console.log("Collection usuarios borrada");
                     db.close();
                 });
 
-                db.dropCollection("amistades", function (err, delOK) {
-                    if (err) console.log("Se ha producido un error al borrar la collection amistades");
-                    if (delOK) console.log("Collection amistades borrada");
+                db.dropCollection("amistades", function () {
+
+                    console.log("Collection amistades borrada");
                     db.close();
                 });
 
-                db.dropCollection("peticiones", function (err, delOK) {
-                    if (err) console.log("Se ha producido un error al borrar la collection peticiones");
-                    if (delOK) console.log("Collection peticiones borrada");
+                db.dropCollection("peticiones", function () {
+
+                    console.log("Collection peticiones borrada");
                     db.close();
                 });
 
                 db.dropCollection("mensajes", function (err, delOK) {
-                    if (err) console.log("Se ha producido un error al borrar la collection mensajes");
-                    if (delOK) console.log("Collection mensajes borrada");
-                    db.close();
-                });
-            }
-        });
-        this.mongo.MongoClient.connect(this.app.get('db'), function (err, db) {
-            if (!err) {
 
-                db.createCollection("usuarios", function (err, delOK) {
-                    if (err) console.log("Se ha producido un error al crear la collection usuarios");
-                    if (delOK) console.log("Collection usuarios creada");
-                    db.close();
-                });
-
-                db.createCollection("amistades", function (err, delOK) {
-                    if (err) console.log("Se ha producido un error al crear la collection amistades");
-                    if (delOK) console.log("Collection amistades creada");
-                    db.close();
-                });
-
-                db.createCollection("peticiones", function (err, delOK) {
-                    if (err) console.log("Se ha producido un error al crear la collection peticiones");
-                    if (delOK) console.log("Collection peticiones creada");
-                    db.close();
-                });
-
-                db.createCollection("mensajes", function (err, delOK) {
-                    if (err) console.log("Se ha producido un error al crear la collection mensajes");
-                    if (delOK) console.log("Collection peticiones mensajes");
+                    console.log("Collection mensajes borrada");
                     db.close();
                 });
             }
