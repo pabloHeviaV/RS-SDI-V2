@@ -1,7 +1,8 @@
 <div id="widget-amigos">
+    <h2>Amigos</h2>
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="Filtrar por nombre o email"
-               id="filtro-nombre"/>
+        <input name="busqueda" type="text" class="form-control" placeholder="Filtrar por nombre o email"
+               id="searchButton"/>
     </div>
     <button class="btn" onclick="cargarAmigos()">Actualizar</button>
     <table class="table table-hover">
@@ -59,9 +60,9 @@
         aux = false;
     }
 
-    $('#filtro-nombre').on('input', function (e) {
+    $('#searchButton').on('input', function (e) {
         var amigosFiltrados = [];
-        var nombreFiltro = $("#filtro-nombre").val();
+        var nombreFiltro = $("#searchButton").val();
 
         for (i = 0; i < amigos.length; i++) {
             if (amigos[i].nameReceiver.indexOf(nombreFiltro) != -1 ||
